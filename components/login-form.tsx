@@ -48,7 +48,8 @@ export function LoginForm({
   };
 
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
+    <div className={cn("flex flex-col gap-6 flex-1", className)} {...props}>
+      <div className="flex min-h-svh justify-center items-center">
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">Login</CardTitle>
@@ -105,6 +106,7 @@ export function LoginForm({
           </form>
         </CardContent>
       </Card>
+      </div>
     </div>
   );
 }

@@ -57,10 +57,11 @@ export function SignUpForm({
   };
 
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card>
+    <div className={cn("flex flex-col gap-6 flex-1", className)} {...props}>
+      <div className="flex min-h-svh justify-center items-center">
+      <Card className="p-6">
         <CardHeader>
-          <CardTitle className="text-2xl">Sign up</CardTitle>
+          <CardTitle className="text-2xl">Start 10xLearning</CardTitle>
           <CardDescription>Create a new account</CardDescription>
         </CardHeader>
         <CardContent>
@@ -115,6 +116,7 @@ export function SignUpForm({
           </form>
         </CardContent>
       </Card>
+      </div>
     </div>
   );
 }
