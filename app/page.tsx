@@ -1,44 +1,93 @@
-import { AuthButton } from "@/components/auth-button";
-import { Hero } from "@/components/hero";
-import { ThemeSwitcher } from "@/components/theme-switcher";
-import { SignUpUserSteps } from "@/components/tutorial/sign-up-user-steps";
+// app/page.tsx
+"use client";
+
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center">
-      <div className="flex-1 w-full flex flex-col gap-20 items-center">
-        <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
-          <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
-            <div className="flex gap-5 items-center font-semibold">
-              <Link href={"/"}>Next.js Supabase Starter</Link>
-            </div>
-            <AuthButton />
-          </div>
+    <main className="min-h-screen bg-white flex flex-col items-center justify-between px-6 py-10 text-gray-800">
+      {/* Header */}
+      <header className="w-full max-w-6xl flex justify-between items-center">
+        <h1 className="text-2xl font-bold text-gray-900">10XLearn</h1>
+        <nav className="hidden md:flex gap-6 text-sm">
+          <Link href="#features" className="hover:text-indigo-600 transition-colors">Features</Link>
+          <Link href="#community" className="hover:text-indigo-600 transition-colors">Community</Link>
+          <Link href="#contact" className="hover:text-indigo-600 transition-colors">Contact</Link>
         </nav>
-        <div className="flex-1 flex flex-col gap-20 max-w-5xl p-5">
-          <Hero />
-          <main className="flex-1 flex flex-col gap-6 px-4">
-            <h2 className="font-medium text-xl mb-4">Next steps</h2>
-            <SignUpUserSteps />
-          </main>
-        </div>
+      </header>
 
-        <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-16">
-          <p>
-            Powered by{" "}
-            <a
-              href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-              target="_blank"
-              className="font-bold hover:underline"
-              rel="noreferrer"
-            >
-              Supabase
-            </a>
-          </p>
-          <ThemeSwitcher />
-        </footer>
-      </div>
+      {/* Hero Section */}
+      <section className="flex flex-col items-center text-center mt-24">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight max-w-3xl"
+        >
+          Learn <span className="text-indigo-600">Faster</span>,  
+          Comprehend <span className="text-indigo-600">Better</span>,  
+          Retain <span className="text-indigo-600">Longer</span>.
+        </motion.h2>
+
+        <p className="text-gray-600 mt-6 max-w-xl">
+          The AI-powered, community-driven learning platform helping African students 10x their understanding and academic success.
+        </p>
+
+        <div className="mt-10 flex gap-4">
+          <Link
+            href="/auth/sign-up"
+            className="bg-indigo-600 text-white px-6 py-3 rounded-xl text-sm font-semibold shadow-md hover:bg-indigo-700 transition-all"
+          >
+            Get Started
+          </Link>
+          <Link
+            href="#features"
+            className="border border-gray-300 px-6 py-3 rounded-xl text-sm font-semibold hover:bg-gray-50 transition-all"
+          >
+            Learn More
+          </Link>
+        </div>
+      </section>
+
+      {/* Features */}
+      <section id="features" className="mt-32 grid md:grid-cols-3 gap-12 max-w-6xl">
+        {[
+          {
+            title: "AI-Powered Mock Tests",
+            desc: "Instantly generate personalized mock exams based on your topics and progress.",
+            icon: "💡",
+          },
+          {
+            title: "Community Learning",
+            desc: "Connect, compete, and collaborate with fellow 10X learners across universities.",
+            icon: "👥",
+          },
+          {
+            title: "Localized Insights",
+            desc: "Access curated content tailored to your university’s syllabus and region.",
+            icon: "🌍",
+          },
+        ].map((f, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.2 }}
+            className="text-center p-6 border rounded-2xl hover:shadow-md transition-shadow"
+          >
+            <div className="text-4xl mb-4">{f.icon}</div>
+            <h3 className="text-lg font-semibold text-gray-900">{f.title}</h3>
+            <p className="text-gray-600 mt-2">{f.desc}</p>
+          </motion.div>
+        ))}
+      </section>
+
+      {/* Footer */}
+      <footer className="mt-32 text-center text-gray-500 text-sm border-t pt-6 w-full max-w-6xl">
+        <p>© {new Date().getFullYear()} 10XLearn. Built to empower learners across Africa. 🌍</p>
+      </footer>
     </main>
   );
 }
