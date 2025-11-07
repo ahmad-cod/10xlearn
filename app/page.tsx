@@ -12,7 +12,7 @@ export default function Home() {
         <h1 className="text-2xl font-bold text-gray-900">10XLearn</h1>
         <nav className="hidden md:flex gap-6 text-sm">
           <Link href="#features" className="hover:text-indigo-600 transition-colors">Features</Link>
-          <Link href="#community" className="hover:text-indigo-600 transition-colors">Community</Link>
+          <Link href="/chat" className="hover:text-indigo-600 transition-colors">Community</Link>
           <Link href="#contact" className="hover:text-indigo-600 transition-colors">Contact</Link>
         </nav>
       </header>
