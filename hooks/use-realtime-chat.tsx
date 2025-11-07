@@ -39,7 +39,7 @@ export function useRealtimeChat({ roomName, username }: UseRealtimeChatProps) {
         .on('postgres_changes', {
           event: 'INSERT',
           schema: 'public',
-          table: 'messages'
+          table: 'chat_messages'
         }, (payload) => {
           setMessages((current) => [...current, payload.new as ChatMessage]);
         })
