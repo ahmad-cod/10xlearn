@@ -9,9 +9,9 @@ import { useState } from "react";
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <main className="min-h-screen bg-white flex flex-col items-center justify-between px-6 py-10 text-gray-800">
+    <main className="min-h-screen bg-white flex flex-col items-center justify-between md:px-6 py-4 md:py-10 text-gray-800">
       {/* Header */}
-      <header className="w-full max-w-6xl flex justify-between items-center">
+      <header className="hidden md:flex w-full max-w-6xl justify-between items-center">
         <h1 className="text-2xl font-bold text-gray-900">10XLearn</h1>
         <nav className="hidden md:flex gap-6 text-sm">
           <Link href="#features" className="hover:text-indigo-600 transition-colors">Features</Link>
@@ -19,7 +19,10 @@ export default function Home() {
           <Link href="#contact" className="hover:text-indigo-600 transition-colors">Contact</Link>
         </nav>
       </header>
-      
+      <div className="w-full md:hidden">
+        <Navbar />
+      </div>
+
       {/* Hero Section */}
       <section className="flex flex-col items-center text-center mt-24">
         <motion.h2
@@ -54,7 +57,7 @@ export default function Home() {
       </section>
 
       {/* Features */}
-      <section id="features" className="mt-32 grid md:grid-cols-3 gap-12 max-w-6xl">
+      <section id="features" className="mt-32 grid md:grid-cols-3 gap-12 px-6 max-w-6xl">
         {[
           {
             title: "AI-Powered Mock Tests",
@@ -88,7 +91,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="mt-32 text-center text-gray-500 text-sm border-t pt-6 w-full max-w-6xl">
+      <footer className="mt-32 text-center text-gray-500 text-sm border-t px-6 pt-6 w-full max-w-6xl">
         <p>© {new Date().getFullYear()} 10XLearn. Built to empower learners across Africa. 🌍</p>
       </footer>
     </main>
