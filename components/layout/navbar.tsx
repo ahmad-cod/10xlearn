@@ -1,8 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
@@ -16,13 +14,6 @@ const authenticatedLinks = [
   { href: "/", label: "Home" },
   { href: "/chat", label: "Chat & Community" },
 ];
-
-const adminLinks = [
-  { href: "/dashboard", label: "Dashboard" },
-  { href: "/about", label: "About Us" },
-  { href: "/feedbacks", label: "Resolutions" },
-  { href: "/post/create", label: "Add Update" }
-]
 
 const unauthenticatedLinks = [
   { href: "/", label: "Home" },
@@ -73,7 +64,7 @@ export default function Navbar() {
   const Navlinks = user?.email ? authenticatedLinks : unauthenticatedLinks;
 
   return (
-    <nav className="bg-white text-[#333333] shadow-md sticky top-0 z-40">
+    <nav className="w-full bg-white text-[#333333] shadow-md sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo and Desktop Navigation */}
@@ -89,7 +80,7 @@ export default function Navbar() {
                   isActive={pathname === link.href}
                 />
               ))}
-              <LogoutButton />
+              {user?.email ? <LogoutButton /> : <></>}
             </div>
             {/* Right side - Avatar for desktop */}
 

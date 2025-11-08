@@ -1,6 +1,7 @@
 // app/page.tsx
 "use client";
 
+import Navbar from "@/components/layout/navbar";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
@@ -9,8 +10,16 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <main className="min-h-screen bg-white flex flex-col items-center justify-between px-6 py-10 text-gray-800">
-
-
+      {/* Header */}
+      <header className="w-full max-w-6xl flex justify-between items-center">
+        <h1 className="text-2xl font-bold text-gray-900">10XLearn</h1>
+        <nav className="hidden md:flex gap-6 text-sm">
+          <Link href="#features" className="hover:text-indigo-600 transition-colors">Features</Link>
+          <Link href="/chat" className="hover:text-indigo-600 transition-colors">Community</Link>
+          <Link href="#contact" className="hover:text-indigo-600 transition-colors">Contact</Link>
+        </nav>
+      </header>
+      
       {/* Hero Section */}
       <section className="flex flex-col items-center text-center mt-24">
         <motion.h2

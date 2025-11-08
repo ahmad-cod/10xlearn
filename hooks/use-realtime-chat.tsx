@@ -45,8 +45,10 @@ export function useRealtimeChat({ roomName, username }: UseRealtimeChatProps) {
         })
         .subscribe((status) => {
           if (status === 'SUBSCRIBED') {
+            console.log('Postgres_changes Subscription connected')
             setIsConnected(true);
           } else {
+            console.log('Subscription disconnected')
             setIsConnected(false);
           }
         });
